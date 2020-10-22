@@ -1,0 +1,41 @@
+# Application Config
+# See:
+# https://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
+spring:
+  application:
+    name: Demo
+  servlet:
+    multipart:
+      max-file-size: 1000MB
+      max-request-size: 1000MB
+      enabled: true
+      maxFileSize: 1000MB
+      maxRequestSize: 1000MB
+
+# Logging Config: FATAL, ERROR, WARN, INFO, DEBUG, TRACE
+# See:
+# https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-logging.html#boot-features-logging-color-coded-output
+logging:
+  file: logs/guestClient.log
+  level:
+    pattern:
+      console: "%d %-5level %logger : %msg%n"
+      file: "%d %-5level [%thread] %logger : %msg%n"
+    root: DEBUG
+    org:
+      springframework:
+        security: DEBUG
+        web: DEBUG
+
+# Server Config
+server:
+  port: 8021
+  servlet:
+    contextPath: /
+    session.cookie.max-age: 31536000
+    session.timeout: 31536000
+    session.persistent: true
+  connection-timeout: 3600000
+
+url:
+  api: "http://localhost:7011"

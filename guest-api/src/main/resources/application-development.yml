@@ -1,0 +1,44 @@
+spring:
+  application:
+    name: Demo
+  datasource:
+    data:
+      url: jdbc:postgresql://localhost:5432/Test
+      username: postgres
+      password: admin
+      driverClassName: org.postgresql.Driver
+      max-active: 100
+      test-while-idle: true
+      test-on-borrow: true
+      validation-query: SELECT 1
+      time-between-eviction-run-millis: 5000
+      min-evictable-idle-time-millis: 6000
+  data:
+    rest:
+      base-path: /rest/api
+  jpa:
+    properties:
+      hibernate:
+        database-platform: default
+        show_sql: true
+        use_sql_comments: false
+        format_sql: false
+    hibernate:
+      ddl-auto: validate
+server:
+  port: 7011
+  context-path: /
+logging:
+  pattern:
+    console: "%d %-5level %logger : %msg%n"
+    file: "%d %-5level [%thread] %logger : %msg%n"
+  file: logs/alfatrex-sso.log
+security:
+  basic:
+    enabled: false
+  oauth2:
+    resource:
+      filter-order: 3
+management:
+  security:
+    enabled: true
